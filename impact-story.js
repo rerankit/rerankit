@@ -109,6 +109,23 @@ impactStory.createCollection = function(aliases, title, successCallback, error) 
     });
 }
 
+/**
+ * Create and then get ALM for a collection
+ * 
+ * See documentation on impactStory.getCollection for more information on how polling works
+ * 
+ * @aliases: list of key-value pairs. For example: [['pmid','12345'],['doi','10.1371/journal.pbio.1000056']]
+ * @title: Title of collection
+ * @callback: Callback to be called when the collection is done loading. function(data)
+ * @error callback function to be called on error: functon(error)
+ * @conf Configuration object. For example:
+ *   {
+ *    includeItems: true,           // set to false to only return meta-information, not ALM data
+ *    retry: 10,                    // Number of times to poll before giving up
+ *    interval: 1000,               // Number of milliseconds between polls
+ *    partial: function(data)       // Partial callback function. Call this on each poll, even if we have only partial data.
+ *   }
+ */
 impactStory.createAndGetCollection = function(aliases, title, callback, error, conf) {
     impactStory.createCollection(aliases, title, function(collection) {
         impactStory.getCollection(collection, callback, error, conf);
