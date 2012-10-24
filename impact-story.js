@@ -142,3 +142,9 @@ impactStory.createCollection = function(aliases, title, successCallback, error) 
                                 }
                             });
 }
+
+impactStory.createAndGetCollection = function(aliases, title, callback, error, conf) {
+  impactStory.createCollection(aliases, title, function(collection) {
+    impactStory.getCollection(collection, callback, error, conf);
+  }, error);
+});
