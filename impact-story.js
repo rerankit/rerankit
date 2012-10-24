@@ -32,8 +32,8 @@ impactStory.fetchTIID = function(doi, callback, error) {
  * using conf.partial = partialCallbackFunc.
  * 
  * @collection: Can be either the collection ID (string), a "create-collection" meta-object, or a collection object.
- * @callback: Callback to be called when the collection is done loading and we have all data. function(data)
- * @error callback function to be called on error: functon(error)
+ * @callback:   Callback to be called when the collection is done loading and we have all data. function(data)
+ * @error:      Callback function to be called on error: functon(error)
  * @conf Configuration object. For example:
  *   {
  *    includeItems: true,           // set to false to only return meta-information, not ALM data
@@ -64,16 +64,14 @@ impactStory.getCollection = function(collection, callback, error, conf) {
         contentType: "application/json; charset=utf-8",
         statusCode: {
             210: function(data){
-                console.log("still updating")
-                    // run partial callback stuff
+                    //@@TODO: run partial callback stuff and deal with errors
+                    //@@TODO: Respect conf.retry and conf.interval
                     setTimeout(function(){
-                        impactStory.getCollection(collection, successCallback, error, conf)
+                        impactStory.getCollection(collection, callback, error, conf)
                     }, 1000)
                 },
             200: function(data) {
-                console.log("done with updating")
-                    successCallback(data)
-                    return false;
+                    callback(data)
                 }
         }
     });
@@ -84,11 +82,11 @@ impactStory.getCollection = function(collection, callback, error, conf) {
  * Create a collection
  *
  * @aliases: list of key-value pairs. For example: [['pmid','12345'],['doi','10.1371/journal.pbio.1000056']]
- * @title: Title of collection
+ * @title:    Title of collection
  * @callback: Callback to be called when the collection is done loading. function(data)
- * @error callback function to be called on error: functon(error)
+ * @error:    callback function to be called on error: functon(error)
  */
-impactStory.createCollection = function(aliases, title, successCallback, error) {
+impactStory.createCollection = function(aliases, title, callback, error) {
     var postData = {
         'aliases' : aliases,
         'title': title
@@ -101,10 +99,10 @@ impactStory.createCollection = function(aliases, title, successCallback, error) 
         contentType:"application/json; charset=utf-8",
         data: JSON.stringify(postData)
     }).done(function (returnedData) {
-        successCallback(returnedData);
-    }).error(function (error) {
+        callback(returnedData);
+    }).error(function (err) {
         if (error) {
-            callback(error);
+            error(err);
         }
     });
 }
