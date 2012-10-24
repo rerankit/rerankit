@@ -23,36 +23,6 @@ impactStory.fetchTIID = function(doi, callback, error) {
 }
 
 /**
- * Create a collection
- *
- * @aliases: list of key-value pairs. For example: [['pmid','12345'],['doi','10.1371/journal.pbio.1000056']]
- * @title: Title of collection
- * @callback: Callback to be called when the collection is done loading. function(data)
- * @error callback function to be called on error: functon(error)
- */
-impactStory.createCollection = function(aliases, title, callback, error) {
-  var postData = {
-    'aliases' : aliases,
-    'title': title,
-  };
-  
-  $.ajax({
-    url: "http://api.total-impact.org/collection",
-    type: 'POST',
-    dataType: 'json',
-    contentType:"application/json; charset=utf-8",
-    data: JSON.stringify(postData)
-  }).done(function (returnedData) {
-    callback(returnedData);
-  }).error(function (error) {
-    if (error) {
-      callback(error);
-    }
-  });
-}
-
-
-/**
  * Get collection information (including all ALM data)
  *
  * Note that for a newly created collection, this can time some time to return the full set of data
@@ -115,9 +85,14 @@ impactStory.getCollection = function(collection, callback, error, conf) {
 }
 
 
-// aliases: list of key-value pairs. For example: [['pmid','12345'],['doi','10.1371/journal.pbio.1000056']]
-// title: Title of collection
-// callback: successCallback to be called when the collection is done loading. function(data)
+/**
+ * Create a collection
+ *
+ * @aliases: list of key-value pairs. For example: [['pmid','12345'],['doi','10.1371/journal.pbio.1000056']]
+ * @title: Title of collection
+ * @callback: Callback to be called when the collection is done loading. function(data)
+ * @error callback function to be called on error: functon(error)
+ */
 impactStory.createCollection = function(aliases, title, successCallback, error) {
     var postData = {
         'aliases' : aliases,
