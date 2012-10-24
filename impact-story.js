@@ -10,16 +10,16 @@ var impactStory = {};
  */
 impactStory.fetchTIID = function(doi, callback, error) {
     $.ajax({
-               url: "http://api.total-impact.org/item/doi/" + doi,
-               type: 'POST',
-               dataType: 'json'
-           }).done(function (data) {
-                       callback(data);
-                   }).error(function (error) {
-                                if (error) {
-                                    callback(error);
-                                }
-                            });
+        url: "http://api.total-impact.org/item/doi/" + doi,
+        type: 'POST',
+        dataType: 'json'
+    }).done(function (data) {
+        callback(data);
+    }).error(function (error) {
+        if (error) {
+            callback(error);
+        }
+    });
 }
 
 /**
@@ -43,45 +43,40 @@ impactStory.fetchTIID = function(doi, callback, error) {
  *   }
  */
 impactStory.getCollection = function(collection, callback, error, conf) {
-
-  // Get the collection ID. Can pass either a string, a "create-collection" meta-object, or a collection object
-  var collectionId;
-  if (typeof collection == 'string') {
-    collectionId = collection;
-  }
-  if (typeof collection == 'object') {
-    if (collection.hasOwnProperty('collection')) {
-      collectionId = collection.collection._id;
+    // Get the collection ID. Can pass either a string, a "create-collection" meta-object, or a collection object
+    var collectionId;
+    if (typeof collection == 'string') {
+        collectionId = collection;
     }
-    else {
-      collectionId = collection._id;
+    if (typeof collection == 'object') {
+        if (collection.hasOwnProperty('collection')) {
+            collectionId = collection.collection._id;
+        }
+        else {
+            collectionId = collection._id;
+        }
     }
-  }
-
+  
     $.ajax({
-               url: "http://api.total-impact.org/collection"+collectionId+'?api_key='+test,
-               type: "GET",
-               dataType: "json",
-               contentType: "application/json; charset=utf-8",
-               statusCode: {
-                   210: function(data){
-                       console.log("still updating")
-                       // run partial callback stuff
-                        setTimeout(function(){
-                            impactStory.getCollection(collection, successCallback, error, conf)
-                       }, 1000)
-                   },
-                   200: function(data) {
-                       console.log("done with updating")
-
-                       // run the success callback
-                       successCallback(data)
-
-                       return false;
-                   }
-               }
-           });
-
+        url: "http://api.total-impact.org/collection"+collectionId+'?api_key='+test,
+        type: "GET",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        statusCode: {
+            210: function(data){
+                console.log("still updating")
+                    // run partial callback stuff
+                    setTimeout(function(){
+                        impactStory.getCollection(collection, successCallback, error, conf)
+                    }, 1000)
+                },
+            200: function(data) {
+                console.log("done with updating")
+                    successCallback(data)
+                    return false;
+                }
+        }
+    });
 }
 
 
@@ -100,23 +95,22 @@ impactStory.createCollection = function(aliases, title, successCallback, error) 
     };
 
     $.ajax({
-               url: "http://api.total-impact.org/collection",
-               type: 'POST',
-               dataType: 'json',
-               contentType:"application/json; charset=utf-8",
-               data: JSON.stringify(postData)
-           }).done(function (returnedData) {
-                       successCallback(returnedData);
-                   })
-            .error(function (error) {
-                                if (error) {
-                                    callback(error);
-                                }
-                            });
+        url: "http://api.total-impact.org/collection",
+        type: 'POST',
+        dataType: 'json',
+        contentType:"application/json; charset=utf-8",
+        data: JSON.stringify(postData)
+    }).done(function (returnedData) {
+        successCallback(returnedData);
+    }).error(function (error) {
+        if (error) {
+            callback(error);
+        }
+    });
 }
 
 impactStory.createAndGetCollection = function(aliases, title, callback, error, conf) {
-  impactStory.createCollection(aliases, title, function(collection) {
-    impactStory.getCollection(collection, callback, error, conf);
-  }, error);
+    impactStory.createCollection(aliases, title, function(collection) {
+        impactStory.getCollection(collection, callback, error, conf);
+    }, error);
 }
