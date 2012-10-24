@@ -20,7 +20,7 @@ impactStory.fetchTIID = function(doi, callback, error) {
 // aliases: list of key-value pairs. For example: [['pmid','12345'],['doi','10.1371/journal.pbio.1000056']]
 // title: Title of collection
 // callback: Callback to be called when the collection is done loading. function(data)
-impactStory.createCollection = function(aliases, title, callback) {
+impactStory.createCollection = function(aliases, title, callback, error) {
   var postData = {
     'aliases' : aliases,
     'title': title,
@@ -34,6 +34,10 @@ impactStory.createCollection = function(aliases, title, callback) {
     data: JSON.stringify(postData)
   }).done(function (returnedData) {
     callback(returnedData);
+  }).error(function (error) {
+    if (error) {
+      callback(error);
+    }
   });
 }
 
