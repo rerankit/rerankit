@@ -58,7 +58,7 @@ impactStory.getCollection = function(collection, callback, error, conf) {
     }
   
     $.ajax({
-        url: "http://api.total-impact.org/collection"+collectionId+'?api_key='+test,
+        url: "http://api.total-impact.org/collection/"+collectionId+'?api_key=test',
         type: "GET",
         dataType: "json",
         contentType: "application/json; charset=utf-8",
