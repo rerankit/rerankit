@@ -1,8 +1,13 @@
 var impactStory = {};
 
-// Given a doi, fetch a tiid
-// doi: DOI
-// callback: callback function to be called. function(tiid)
+
+/**
+ * Given a doi, fetch a tiid
+ *
+ * @doi DOI
+ * @callback callback function to be called: function(tiid)
+ * @error callback function to be called on error: functon(error)
+ */
 impactStory.fetchTIID = function(doi, callback, error) {
   $.ajax({
     url: "http://api.total-impact.org/item/doi/" + doi,
@@ -17,9 +22,14 @@ impactStory.fetchTIID = function(doi, callback, error) {
   });
 }
 
-// aliases: list of key-value pairs. For example: [['pmid','12345'],['doi','10.1371/journal.pbio.1000056']]
-// title: Title of collection
-// callback: Callback to be called when the collection is done loading. function(data)
+/**
+ * Create a collection
+ *
+ * @aliases: list of key-value pairs. For example: [['pmid','12345'],['doi','10.1371/journal.pbio.1000056']]
+ * @title: Title of collection
+ * @callback: Callback to be called when the collection is done loading. function(data)
+ * @error callback function to be called on error: functon(error)
+ */
 impactStory.createCollection = function(aliases, title, callback, error) {
   var postData = {
     'aliases' : aliases,
@@ -41,13 +51,26 @@ impactStory.createCollection = function(aliases, title, callback, error) {
   });
 }
 
-
-// conf: {
-//  includeItems: true,
-//  retry: 10,
-//  interval: 1000
-//  partial: function(data)
-//}
+/**
+ * Get collection information (including all ALM data)
+ *
+ * Note that for a newly created collection, this can time some time to return the full set of data
+ * as total-impact can take a while to generate it. To get around this problem we poll the total-impact API
+ * in intervals and only return when we have the full set of data. This generally takes about 5 seconds. 
+ * To get back partial (incomplete) data returned from each poll, defind a partial-callback function 
+ * using conf.partial = partialCallbackFunc.
+ * 
+ * @collection: Can be either the collection ID (string), a "create-collection" meta-object, or a collection object.
+ * @callback: Callback to be called when the collection is done loading and we have all data. function(data)
+ * @error callback function to be called on error: functon(error)
+ * @conf Configuration object. For example:
+ *   {
+ *    includeItems: true,           // set to false to only return meta-information, not ALM data
+ *    retry: 10,                    // Number of times to poll before giving up
+ *    interval: 1000,               // Number of milliseconds between polls
+ *    partial: function(data)       // Partial callback function. Call this on each poll, even if we have only partial data.
+ *   }
+ */
 impactStory.getCollection = function(collection, callback, error, conf) {
 
   // Get the collection ID. Can pass either a string, a "create-collection" meta-object, or a collection object
