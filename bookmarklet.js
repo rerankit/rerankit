@@ -206,6 +206,7 @@ impactStory.createCollection = function(aliases, title, successCallback, error) 
  */
 impactStory.createAndGetCollection = function(aliases, title, callback, error, conf) {
     impactStory.createCollection(aliases, title, function(collection) {
+	con.append(collection);
         impactStory.getCollection(collection.collection, callback, error, conf);
     }, error);
 }
