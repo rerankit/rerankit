@@ -68,7 +68,7 @@ impactStory.getCollection = function(collection, callback, error, conf) {
                        console.log("still updating")
                        // run partial callback stuff
                         setTimeout(function(){
-                            impactStory.getCollection(collection, successCallback, error, conf)
+                            impactStory.getCollection(collection, callback, error, conf)
                        }, 1000)
                    },
                    200: function(data) {
