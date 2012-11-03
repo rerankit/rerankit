@@ -36,7 +36,7 @@ window.bookmarklet({
 	var ref_objs = parse();
 	var collection = prep_collection(ref_objs);
 	impactStory.createAndGetCollection(collection, 'YAY', function(){
-	    alert('horray');
+	    alert('horray')
 	});
 	var n = 1 + 1; //for ghetto debugging
 	
