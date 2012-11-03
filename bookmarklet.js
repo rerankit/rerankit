@@ -31,19 +31,20 @@ window.bookmarklet({
 	//import_helper();
 	$('body').prepend("<div id='console'></div>");
 	con = $('#console');
-	con.append('<p>hello?</p>');
 	// The meat of your jQuery code goes here
 	var ref_objs = parse();
 	var collection = prep_collection(ref_objs);
 	var results = impactStory.createAndGetCollection(collection, 'YAY', function(data){
 	    var items = data.items;
-	    for (item in items){
+	    for (var i = 0; i < items.length; i++){
+		con.append(i);
+		/*
 		for (ref in ref_objs){
 		    if (ref_objs.pmid == items[item].aliases.pmid[0]){
 			ref_objs.impact_story = items[item];
 		    }
 		}
-	    con.append(data);
+		*/
 	    }
 	});
 	var n = 1 + 1; //for ghetto debugging
@@ -67,7 +68,6 @@ var parse = function() {
 		       'element': $(this),
 		       'impact_story': null 
 		      });
-	con.append(index);
     });
     con.append(ref_objs.length);
     //con.append(references);
