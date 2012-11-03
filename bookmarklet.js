@@ -22,7 +22,7 @@ window.bookmarklet({
     ready : function(){
 	console.log("start");
 	// The meat of your jQuery code goes here
-	parse();
+	//parse();
  
     }
 })
