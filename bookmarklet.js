@@ -11,6 +11,8 @@
  *
  */
  
+console.log("start parse");
+
 window.bookmarklet = function(opts){fullFunc(opts)};
  
 // These are the styles, scripts and callbacks we include in our bookmarklet:
