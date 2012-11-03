@@ -26,7 +26,7 @@ window.bookmarklet({
 	con.append('<p>hello?</p>');
 	// The meat of your jQuery code goes here
 	var ref_objs = parse();
- 
+	var n = 1 + 1;
     }
 })
  
