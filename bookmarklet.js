@@ -38,11 +38,14 @@ document.body.appendChild(c)
 var parse = function() {
     var references = $('.rprt');
     
-    var ref_objs = new Object();
+    var ref_objs = [];
     references.each(function(index) {
 	var dd = $(this).find('.rprtid dd')[0];
 	//con.append(dd)
-	ref_objs[dd.textContent] = $(this);
+	ref_objs += {'pmid': dd.textContent,
+		     'element': $(this),
+		     'impact_story': null 
+		    };
 	con.append(index);
     });
     con.append(ref_objs.length);
