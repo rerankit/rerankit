@@ -182,7 +182,7 @@ impactStory.createCollection = function(aliases, title, successCallback, error) 
         successCallback(returnedData);
     }).error(function (error) {
         if (error) {
-            callback(error);
+            successCallback(error);
         }
     });
 }
