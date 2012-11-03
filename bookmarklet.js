@@ -36,10 +36,11 @@ window.bookmarklet({
 	var ref_objs = parse();
 	var collection = prep_collection(ref_objs);
 	var results = impactStory.createAndGetCollection(collection, 'YAY', function(data){
-	    for (item in data.items){
+	    var items = data.item;
+	    for (item in items){
 		for (ref in ref_objs){
-		    if (ref_objs.pmid == data.items[item].aliases.pmid[0]){
-			ref_objs.impact_story = data.items[item];
+		    if (ref_objs.pmid == items[item].aliases.pmid[0]){
+			ref_objs.impact_story = items[item];
 		    }
 		}
 	    con.append(data);
