@@ -44,6 +44,7 @@ window.bookmarklet({
 		    }
 		}
 	    con.append(data);
+	    }
 	});
 	var n = 1 + 1; //for ghetto debugging
 	
