@@ -56,4 +56,28 @@ impactStory.getCollection = function(collection, callback, error, conf) {
       collectionId = collection._id;
     }
   }
+
+    $.ajax({
+               url: "http://api.total-impact.org/collection"+collectionId+'?api_key='+test,
+               type: "GET",
+               dataType: "json",
+               contentType: "application/json; charset=utf-8",
+               statusCode: {
+                   210: function(data){
+                       console.log("still updating")
+                       // run partial callback stuff
+
+                       impactStory.getCollection(collection, callback, error, conf)
+                   },
+                   200: function(data) {
+                       console.log("done with updating")
+
+                       // run the success callback
+                       callback(data)
+
+                       return false;
+                   }
+               }
+           });
+
 }
