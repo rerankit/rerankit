@@ -35,8 +35,13 @@ c.onload=function(){e(a.css);d(a.js)};
 document.body.appendChild(c)
 })(a.jqpath)};
 
+var ref_objs = {}
 
 var parse = function() {
     var references = $('.rprt');
-    con.append(references);
+    references.each(function(index) {
+	con.append($(this).find('.rprtid dd').text())
+    });
+    //con.append(references);
+    
 };
