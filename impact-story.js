@@ -97,8 +97,9 @@ impactStory.getCollection = function(collection, callback, error, conf) {
                    210: function(data){
                        console.log("still updating")
                        // run partial callback stuff
-
-                       impactStory.getCollection(collection, successCallback, error, conf)
+                        setTimeout(fuction(){
+                            impactStory.getCollection(collection, successCallback, error, conf), 1000
+                       })
                    },
                    200: function(data) {
                        console.log("done with updating")
@@ -130,11 +131,7 @@ impactStory.createCollection = function(aliases, title, successCallback, error) 
                contentType:"application/json; charset=utf-8",
                data: JSON.stringify(postData)
            }).done(function (returnedData) {
-                       var collection = returnedData.collection._id
-                       var callback = impactStory.getCollection
-                       var conf = {}
-
-                       impactStory.getCollection(collection, successCallback, error, conf);
+                       successCallback(returnedData);
                    })
             .error(function (error) {
                                 if (error) {
