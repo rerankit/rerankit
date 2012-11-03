@@ -65,6 +65,7 @@ var parse = function() {
 var prep_collection = function(refs) {
     collection_list = new Array();
     for (ref in refs){
+	alert(ref);
 	collection_list.push({'pmid': ref['pmid']});
     }
     return collection_list;
