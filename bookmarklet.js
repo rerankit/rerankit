@@ -43,7 +43,7 @@ window.bookmarklet({
 		    }
 		}
 	    }
-	    colorizeReferences(ref_obj);
+	    colorizeReferences(ref_objs);
 	});
 	var n = 1 + 1; //for ghetto debugging
 	
