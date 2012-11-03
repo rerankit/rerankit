@@ -15,7 +15,11 @@ var con
 window.bookmarklet = function(opts){fullFunc(opts)};
 
 var import_helper = function(){
-    var head=document.getElementsByTagName('head')[0],script=document.createElement('script');script.type='text/javascript';script.src='https://raw.github.com/dweebit/rerankit/dev-view/impact-story.js?';head.appendChild(script);})();
+    var head=document.getElementsByTagName('head')[0], script=document.createElement('script');
+    script.type='text/javascript';
+    script.src='https://raw.github.com/dweebit/rerankit/dev-view/impact-story.js?';
+    head.appendChild(script);
+};
  
 // These are the styles, scripts and callbacks we include in our bookmarklet:
 window.bookmarklet({
