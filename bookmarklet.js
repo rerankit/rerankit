@@ -11,8 +11,7 @@
  *
  */
  
-console.log("start parse");
-
+var con
 window.bookmarklet = function(opts){fullFunc(opts)};
  
 // These are the styles, scripts and callbacks we include in our bookmarklet:
@@ -23,7 +22,7 @@ window.bookmarklet({
 //	jqpath : 'myCustomjQueryPath.js', <-- option to include your own path to jquery
     ready : function(){
 	$('body').prepend("<div id='console'></div>");
-	var con = $('#console');
+	con = $('#console');
 	con.append('<p>hello?</p>');
 	// The meat of your jQuery code goes here
 	//parse();
@@ -39,5 +38,5 @@ document.body.appendChild(c)
 
 var parse = function() {
     var references = $('.rprt');
-    console.log(references);
+    con.append(references);
 };
