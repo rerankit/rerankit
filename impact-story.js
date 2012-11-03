@@ -119,4 +119,4 @@ impactStory.createAndGetCollection = function(aliases, title, callback, error, c
   impactStory.createCollection(aliases, title, function(collection) {
     impactStory.getCollection(collection, callback, error, conf);
   }, error);
-});
+}
