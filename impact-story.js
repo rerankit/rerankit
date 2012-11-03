@@ -41,6 +41,13 @@ impactStory.createCollection = function(aliases, title, callback, error) {
   });
 }
 
+
+// conf: {
+//  includeItems: true,
+//  retry: 10,
+//  interval: 1000
+//  partial: function(data)
+//}
 impactStory.getCollection = function(collection, callback, error, conf) {
 
   // Get the collection ID. Can pass either a string, a "create-collection" meta-object, or a collection object
