@@ -37,14 +37,11 @@ window.bookmarklet({
 	var results = impactStory.createAndGetCollection(collection, 'YAY', function(data){
 	    var items = data.items;
 	    for (var i = 0; i < items.length; i++){
-		con.append(i);
-		/*
-		for (ref in ref_objs){
-		    if (ref_objs.pmid == items[item].aliases.pmid[0]){
-			ref_objs.impact_story = items[item];
+		for (var j = 0; j < ref_objs.length; j++){
+		    if (ref_objs[j].pmid == items[i].aliases.pmid[0]){
+			ref_objs[j].impact_story = items[i];
 		    }
 		}
-		*/
 	    }
 	});
 	var n = 1 + 1; //for ghetto debugging
