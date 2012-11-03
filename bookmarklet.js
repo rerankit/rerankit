@@ -33,6 +33,6 @@ document.body.appendChild(c)
 })(a.jqpath)};
 
 var parse = function() {
-    var references = $('#references').next('ol');
+    var references = $('.rprt');
     console.log(references);
 };
