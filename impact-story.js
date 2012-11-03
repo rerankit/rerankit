@@ -52,7 +52,7 @@ impactStory.getCollection = function(collection, successCallback, error, conf) {
                        console.log("still updating")
                        // run partial callback stuff
 
-                       impactStory.getCollection(collection, callback, error, conf)
+                       impactStory.getCollection(collection, successCallback, error, conf)
                    },
                    200: function(data) {
                        console.log("done with updating")
