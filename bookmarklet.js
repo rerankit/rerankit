@@ -242,9 +242,9 @@ function describeItemWithColor(item) {
 
 function colorizeReferences(refs) {
     for (var i=0; i<refs.length; i++) {
-        var item = ref[i].impact_story
+        var item = refs[i].impact_story
         var backgroundColor = describeItemWithColor(item)
-        ref[i].element.css("background-color", backgroundColor)
+        refs[i].element.css("background-color", backgroundColor)
     }
     return refs
 }
