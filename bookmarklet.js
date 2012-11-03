@@ -42,10 +42,10 @@ var parse = function() {
     references.each(function(index) {
 	var dd = $(this).find('.rprtid dd')[0];
 	//con.append(dd)
-	ref_objs += {'pmid': dd.textContent,
-		     'element': $(this),
-		     'impact_story': null 
-		    };
+	ref_objs.push({'pmid': dd.textContent,
+		       'element': $(this),
+		       'impact_story': null 
+		      });
 	con.append(index);
     });
     con.append(ref_objs.length);
