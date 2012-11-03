@@ -38,7 +38,7 @@ document.body.appendChild(c)
 var parse = function() {
     var references = $('.rprt');
     
-    var ref_objs = [];
+    var ref_objs = new Array();
     references.each(function(index) {
 	var dd = $(this).find('.rprtid dd')[0];
 	//con.append(dd)
