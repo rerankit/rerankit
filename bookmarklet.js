@@ -35,8 +35,8 @@ window.bookmarklet({
 	// The meat of your jQuery code goes here
 	var ref_objs = parse();
 	var collection = prep_collection(ref_objs);
-	impactStory.createCollection(function(){
-	    alert('horray')
+	impactStory.createAndGetCollection(collection, 'YAY', function(){
+	    alert('horray');
 	});
 	var n = 1 + 1; //for ghetto debugging
 	
@@ -69,7 +69,7 @@ var parse = function() {
 var prep_collection = function(refs) {
     collection_list = new Array();
     for (ref in refs){
-	collection_list.push({'pmid': refs[ref].pmid});
+	collection_list.push(['pmid', refs[ref].pmid]);
     }
     return collection_list;
 }
