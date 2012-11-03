@@ -32,7 +32,9 @@ c.onload=function(){e(a.css);d(a.js)};
 document.body.appendChild(c)
 })(a.jqpath)};
 
+/*
 var parse = function() {
     var references = $('.rprt');
     console.log(references);
 };
+*/
