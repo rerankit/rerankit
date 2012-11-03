@@ -35,7 +35,8 @@ window.bookmarklet({
 	// The meat of your jQuery code goes here
 	var ref_objs = parse();
 	var collection = prep_collection(ref_objs);
-	var results = impactStory.createAndGetCollection(collection, 'YAY', function(){
+	var results = impactStory.createAndGetCollection(collection, 'YAY', function(data){
+	    con.append(data);
 	});
 	var n = 1 + 1; //for ghetto debugging
 	
