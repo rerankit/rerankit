@@ -3,6 +3,21 @@
     <script type = "text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
     <script type = "text/javascript" src="impact-story.js"></script>
     <script type = "text/javascript">
+
+       function testFunction(data){
+          console.log("this callback got called with this data:")
+          console.log(data)
+       }
+       impactStory.createCollection(
+               [["pmid", "23116046"], ["pmid", "23115605"]],
+               "test collection",
+               testFunction
+       )
+
+       
+
+
+
     </script>
   </head>
   <body>
