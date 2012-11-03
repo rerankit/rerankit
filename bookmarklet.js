@@ -35,7 +35,7 @@ c.onload=function(){e(a.css);d(a.js)};
 document.body.appendChild(c)
 })(a.jqpath)};
 
-var ref_objs = {}
+var ref_objs = new Object();
 
 var parse = function() {
     var references = $('.rprt');
@@ -43,6 +43,7 @@ var parse = function() {
 	var dd = $(this).find('.rprtid dd')[0];
 	//con.append(dd)
 	ref_objs[dd] = $(this);
+	con.append(index);
     });
     con.append(ref_objs.length);
     //con.append(references);
