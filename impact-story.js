@@ -67,9 +67,9 @@ impactStory.getCollection = function(collection, callback, error, conf) {
                    210: function(data){
                        console.log("still updating")
                        // run partial callback stuff
-                        setTimeout(fuction(){
-                            impactStory.getCollection(collection, successCallback, error, conf), 1000
-                       })
+                        setTimeout(function(){
+                            impactStory.getCollection(collection, successCallback, error, conf)
+                       }, 1000)
                    },
                    200: function(data) {
                        console.log("done with updating")
@@ -96,7 +96,7 @@ impactStory.getCollection = function(collection, callback, error, conf) {
 impactStory.createCollection = function(aliases, title, successCallback, error) {
     var postData = {
         'aliases' : aliases,
-        'title': title,
+        'title': title
     };
 
     $.ajax({
