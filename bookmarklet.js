@@ -35,7 +35,11 @@ window.bookmarklet({
 	// The meat of your jQuery code goes here
 	var ref_objs = parse();
 	var collection = prep_collection(ref_objs);
+	impactStory.createCollection(function(){
+	    alert('horray')
+	});
 	var n = 1 + 1; //for ghetto debugging
+	
     }
 })
  
