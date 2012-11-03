@@ -25,7 +25,7 @@ window.bookmarklet({
 	con = $('#console');
 	con.append('<p>hello?</p>');
 	// The meat of your jQuery code goes here
-	parse();
+	var ref_objs = parse();
  
     }
 })
