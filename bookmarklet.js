@@ -22,7 +22,8 @@ window.bookmarklet({
     js  : [],    
 //	jqpath : 'myCustomjQueryPath.js', <-- option to include your own path to jquery
     ready : function(){
-	alert("start");
+	var con = $('body').prepend("<div id='console'></div>");
+	con.append('hello?');
 	// The meat of your jQuery code goes here
 	//parse();
  
@@ -34,9 +35,8 @@ c.onload=function(){e(a.css);d(a.js)};
 document.body.appendChild(c)
 })(a.jqpath)};
 
-/*
+
 var parse = function() {
     var references = $('.rprt');
     console.log(references);
 };
-*/
