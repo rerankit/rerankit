@@ -41,7 +41,7 @@ var parse = function() {
     var references = $('.rprt');
     references.each(function(index) {
 	var dd = $(this).find('.rprtid dd')[0];
-	con.append(dd.text())
+	con.append(dd)
     });
     //con.append(references);
     
