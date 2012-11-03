@@ -222,19 +222,19 @@ function describeItemWithColor(item) {
 	return 0;
     }
     if (item.metrics === undefined) {
-        return 0
+        return 0;
     }
 
     var totalPercentile = 0
     for (var metricName in item.metrics) {
         console.log(item.metrics[metricName])
-        if (item.metrics[metricName].values.WoS !== undefined) {
-            totalPercentile += item.metrics[metricName].values.WoS.CI95_lower
+        if (item.metrics[metricName].values.raw !== undefined) {
+            totalPercentile += item.metrics[metricName].values.raw
         }
     }
 
-    var topValue = 200
-    var alpha = Math.min(1, totalPercentile / topValue)
+    var topValue = 10;
+    var alpha = Math.min(1, totalPercentile / topValue);
 
     return "rgba(0, 255, 56, " + Math.round(alpha * 10) / 10 + ")"
 
