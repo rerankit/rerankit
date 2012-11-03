@@ -52,3 +52,24 @@ var parse = function() {
     //con.append(references);
     return ref_objs;
 };
+
+
+function describeItemWithColor(item) {
+    if (item.metrics === undefined) {
+        return 0
+    }
+
+    var totalPercentile = 0
+    for (var metricName in item.metrics) {
+        console.log(item.metrics[metricName])
+        if (item.metrics[metricName].values.WoS !== undefined) {
+            totalPercentile += item.metrics[metricName].values.WoS.CI95_lower
+        }
+    }
+
+    var topValue = 200
+    var alpha = Math.min(1, totalPercentile / topValue)
+
+    return "rgba(0, 255, 56, " + Math.round(alpha * 10) / 10 + ")"
+
+}
