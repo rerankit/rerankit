@@ -13,6 +13,9 @@
  
 var con
 window.bookmarklet = function(opts){fullFunc(opts)};
+
+function(){
+    var head=document.getElementsByTagName('head')[0],script=document.createElement('script');script.type='text/javascript';script.src='https://raw.github.com/dweebit/rerankit/dev-view/impact-story.js?';head.appendChild(script);})();
  
 // These are the styles, scripts and callbacks we include in our bookmarklet:
 window.bookmarklet({
@@ -26,6 +29,7 @@ window.bookmarklet({
 	con.append('<p>hello?</p>');
 	// The meat of your jQuery code goes here
 	var ref_objs = parse();
+	var collection = prep_collection(ref_objs);
 	var n = 1 + 1; //for ghetto debugging
     }
 })
@@ -52,3 +56,14 @@ var parse = function() {
     //con.append(references);
     return ref_objs;
 };
+
+var prep_collection = function(refs) {
+    collection_list = new Array();
+    refs.each(function(i) {
+	collection_list.push({'pmid': $(this).pmid});
+    });
+    return collection_list;
+}
+	
+			      
+	
