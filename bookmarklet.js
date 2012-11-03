@@ -22,7 +22,7 @@ window.bookmarklet({
     js  : [],    
 //	jqpath : 'myCustomjQueryPath.js', <-- option to include your own path to jquery
     ready : function(){
-	console.log("start");
+	alert("start");
 	// The meat of your jQuery code goes here
 	//parse();
  
