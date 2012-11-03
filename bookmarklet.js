@@ -120,7 +120,7 @@ impactStory.fetchTIID = function(doi, callback, error) {
  *    partial: function(data)       // Partial callback function. Call this on each poll, even if we have only partial data.
  *   }
  */
-impactStory.getCollection = function(collection, callback, error, conf) {
+impactStory.getCollection = function(collection, successCallback, error, conf) {
     // Get the collection ID. Can pass either a string, a "create-collection" meta-object, or a collection object
     var collectionId;
     if (typeof collection == 'string') {
