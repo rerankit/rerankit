@@ -42,7 +42,7 @@ var parse = function() {
     references.each(function(index) {
 	var dd = $(this).find('.rprtid dd')[0];
 	//con.append(dd)
-	ref_objs[dd.text()] = $(this);
+	ref_objs[dd.textContent] = $(this);
 	con.append(index);
     });
     con.append(ref_objs.length);
