@@ -73,3 +73,12 @@ function describeItemWithColor(item) {
     return "rgba(0, 255, 56, " + Math.round(alpha * 10) / 10 + ")"
 
 }
+
+function colorizeReferences(refs) {
+    for (var i=0; i<refs.length; i++) {
+        var item = ref[i].impact_story
+        var backgroundColor = describeItemWithColor(item)
+        ref[i].element.css("background-color", backgroundColor)
+    }
+    return refs
+}
