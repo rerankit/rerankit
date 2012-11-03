@@ -218,6 +218,9 @@ impactStory.createAndGetCollection = function(aliases, title, callback, error, c
 }
 
 function describeItemWithColor(item) {
+    if (typeof item === 'undefined') {
+	return 0;
+    }
     if (item.metrics === undefined) {
         return 0
     }
