@@ -44,7 +44,7 @@ var parse = function() {
 	//con.append(dd)
 	ref_objs[dd] = $(this);
     });
-    con.append(ref_objs);
+    con.append(ref_objs.length);
     //con.append(references);
     
 };
