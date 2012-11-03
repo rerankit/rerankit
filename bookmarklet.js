@@ -23,7 +23,7 @@ window.bookmarklet({
 //	jqpath : 'myCustomjQueryPath.js', <-- option to include your own path to jquery
     ready : function(){
 	var con = $('body').prepend("<div id='console'></div>");
-	con.append('hello?');
+	con.html('<p>hello?</p>');
 	// The meat of your jQuery code goes here
 	//parse();
  
